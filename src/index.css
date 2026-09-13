@@ -1,0 +1,247 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   DESIGN TOKENS — color values as "R G B" triplets so Tailwind's
+   `rgb(var(--x) / <alpha-value>)` pattern can control opacity.
+   ========================================================================== */
+
+:root {
+  /* Light theme (default) */
+  --color-bg: 248 249 251;              /* #F8F9FB */
+  --color-surface: 255 255 255;         /* #FFFFFF */
+  --color-surface-raised: 255 255 255;  /* #FFFFFF */
+  --color-border: 226 232 240;          /* #E2E8F0 */
+
+  --color-text: 15 23 42;               /* #0F172A */
+  --color-muted: 100 116 139;           /* #64748B */
+
+  --color-signal: 217 143 26;           /* #D98F1A — amber, "the number that matters" */
+  --color-signal-muted: 250 235 208;    /* tint for badges/backgrounds */
+  --color-insight: 88 80 236;           /* #5850EC — indigo, links & data viz */
+  --color-insight-muted: 227 224 253;
+
+  --color-success: 22 163 74;           /* #16A34A */
+  --color-danger: 220 38 38;            /* #DC2626 */
+
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+
+  /* Glassmorphism + shared surfaces reference these */
+  --glass-bg: 255 255 255;
+  --glass-border: 255 255 255;
+}
+
+.dark {
+  --color-bg: 10 15 29;                 /* #0A0F1D */
+  --color-surface: 17 24 39;            /* #111827 */
+  --color-surface-raised: 24 32 51;     /* #182033 */
+  --color-border: 31 42 61;             /* #1F2A3D */
+
+  --color-text: 231 234 243;            /* #E7EAF3 */
+  --color-muted: 148 163 184;           /* #94A3B8 */
+
+  --color-signal: 240 180 41;           /* #F0B429 — brighter on dark */
+  --color-signal-muted: 61 47 12;
+  --color-insight: 129 140 248;         /* #818CF8 */
+  --color-insight-muted: 40 39 82;
+
+  --color-success: 74 222 128;
+  --color-danger: 248 113 113;
+
+  --glass-bg: 17 24 39;
+  --glass-border: 255 255 255;
+}
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    transition: background-color 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display text-ink;
+    letter-spacing: -0.01em;
+  }
+
+  code, kbd, samp, pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    background: rgb(var(--color-signal) / 0.25);
+    color: rgb(var(--color-text));
+  }
+
+  /* Visible, on-brand focus ring for every interactive element */
+  :focus-visible {
+    outline: 2px solid rgb(var(--color-signal));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-bg;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-pill;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--color-muted));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM
+   ========================================================================== */
+
+@layer components {
+  .text-display-1 {
+    @apply font-display text-6xl md:text-7xl lg:text-8xl font-semibold tracking-tight;
+  }
+  .text-display-2 {
+    @apply font-display text-5xl md:text-6xl font-semibold tracking-tight;
+  }
+  .text-heading-1 {
+    @apply font-display text-3xl md:text-4xl font-semibold tracking-tight;
+  }
+  .text-heading-2 {
+    @apply font-display text-2xl md:text-3xl font-semibold tracking-tight;
+  }
+  .text-heading-3 {
+    @apply font-sans text-xl md:text-2xl font-semibold;
+  }
+  .text-body-lg {
+    @apply font-sans text-lg text-ink/80;
+  }
+  .text-body {
+    @apply font-sans text-base text-ink/80;
+  }
+  .text-caption {
+    @apply font-mono text-xs uppercase tracking-[0.14em] text-muted;
+  }
+  .text-data {
+    @apply font-mono tabular-nums;
+  }
+
+  /* ========================================================================
+     LAYOUT UTILITIES
+     ======================================================================== */
+
+  .section-padding {
+    @apply py-section-y px-section-x;
+  }
+
+  .container-xl {
+    @apply mx-auto w-full max-w-container px-section-x;
+  }
+
+  /* ========================================================================
+     SURFACES — cards, glass, dividers
+     ======================================================================== */
+
+  .card {
+    @apply bg-surface border border-border rounded-lg shadow-soft;
+  }
+
+  .card-interactive {
+    @apply card transition-all duration-400 ease-signature hover:shadow-elevated hover:-translate-y-0.5;
+  }
+
+  .glass {
+    background-color: rgb(var(--glass-bg) / 0.6);
+    border: 1px solid rgb(var(--glass-border) / 0.1);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+  }
+
+  .glass-panel {
+    @apply glass rounded-lg shadow-elevated;
+  }
+
+  .divider {
+    @apply h-px w-full bg-border;
+  }
+
+  /* Faint analytical grid — the page's quiet, recurring texture */
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(var(--color-border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--color-border) / 0.5) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* ========================================================================
+     BUTTONS
+     ======================================================================== */
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5
+      text-sm font-medium transition-all duration-400 ease-signature
+      focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+      disabled:opacity-50 disabled:pointer-events-none select-none;
+  }
+
+  .btn-primary {
+    @apply btn bg-signal text-[#1A1206] hover:shadow-glow-signal hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply btn bg-transparent text-ink border border-border hover:border-signal/60 hover:bg-signal-muted/40;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-ink hover:bg-ink/5;
+  }
+
+  .btn-icon {
+    @apply btn p-2.5 aspect-square rounded-full;
+  }
+
+  /* ========================================================================
+     ANIMATION HELPERS
+     ======================================================================== */
+
+  .hover-lift {
+    @apply transition-transform duration-400 ease-signature hover:-translate-y-1;
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(
+      90deg,
+      rgb(var(--color-border) / 0.4) 25%,
+      rgb(var(--color-border) / 0.7) 37%,
+      rgb(var(--color-border) / 0.4) 63%
+    );
+    background-size: 400% 100%;
+    animation: shimmer 2.5s ease-in-out infinite;
+  }
+}
