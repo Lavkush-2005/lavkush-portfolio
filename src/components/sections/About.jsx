@@ -39,7 +39,7 @@ export function About() {
           <img
   src="/profile/Lavkush_Profile_pic1.png"
   alt="Lavkush Kumar"
-  className="h-full w-full rounded-full object-cover"
+  className="h-full w-full rounded-2xl object-cover"
 />
         </motion.div>
 
