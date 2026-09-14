@@ -36,7 +36,11 @@ export function About() {
           transition={{ duration: 0.6, ease: MOTION.easeSignature }}
           className="glass mx-auto flex aspect-[4/5] w-full max-w-sm items-center justify-center rounded-2xl border border-dashed border-border p-8"
         >
-          <span className="text-caption text-center">Profile photo placeholder</span>
+          <img
+  src="/profile/Lavkush_Profile_pic1.png"
+  alt="Lavkush Kumar"
+  className="h-full w-full rounded-full object-cover"
+/>
         </motion.div>
 
         <div className="space-y-6">
