@@ -112,7 +112,11 @@ export function Hero() {
           variants={item}
           className="glass relative mx-auto flex aspect-square w-full max-w-sm items-center justify-center rounded-2xl border border-dashed border-border"
         >
-          <span className="text-caption">Illustration placeholder</span>
+         <img
+  src="/profile/Lavkush_Profile_pic1.png"
+  alt="Lavkush Kumar"
+  className="h-full w-full rounded-2xl object-cover"
+/>
         </motion.div>
       </motion.div>
 
