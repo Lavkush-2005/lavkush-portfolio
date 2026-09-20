@@ -44,7 +44,7 @@ export function TypingText({ words = [], typingSpeed = 70, deletingSpeed = 40, p
   const current = words[index % words.length];
 
   return (
-    <span className={cn('inline-flex items-center', className)}>
+    <span className={cn('inline-flex items-center text-indigo-500', className)}>
       <span aria-hidden="true">{current.slice(0, subIndex)}</span>
       <span
         aria-hidden="true"
