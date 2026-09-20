@@ -8,11 +8,11 @@ export const siteConfig = {
   role: 'Data Analyst',
   roles: [
     'Data Analyst',
-    'Dashboard Builder',
-    'SQL & Python Enthusiast',
+    'Data Storyteller',
+    'SQL & Python Learner',
     'Insight Generator',
   ],
-  tagline: "I don't just analyze data — I decode direction.",
+  tagline: "Making data simple, useful, and actionable.",
   resumeUrl: '#',
   navLinks: [
     { label: 'Home', href: '#home' },
