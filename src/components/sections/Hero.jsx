@@ -110,7 +110,7 @@ export function Hero() {
 
        <motion.div
   variants={item}
-  className="glass relative mx-auto flex aspect-square w-full max-w-[230px] overflow-hidden items-center justify-center rounded-2xl border border-dashed border-border"
+  className="glass relative mx-auto flex aspect-square w-full max-w-[280px] overflow-hidden items-center justify-center rounded-2xl border border-dashed border-border"
 >
   <img
     src="/profile/Lavkush_Profile_pic1.png"
