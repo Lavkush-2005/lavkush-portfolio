@@ -108,15 +108,15 @@ export function Hero() {
           </motion.div>
         </div>
 
-        <motion.div
-          variants={item}
-          className="glass relative mx-auto flex aspect-square w-full max-w-sm overflow-hidden items-center justify-center rounded-2xl border border-dashed border-border"
-        >
-         <img
-  src="/profile/Lavkush_Profile_pic1.png"
-  alt="Lavkush Kumar"
-  className="h-full w-full scale-x-100 rounded-2xl object-cover"
-/>
+       <motion.div
+  variants={item}
+  className="glass relative mx-auto flex aspect-square w-full max-w-[230px] overflow-hidden items-center justify-center rounded-2xl border border-dashed border-border"
+>
+  <img
+    src="/profile/Lavkush_Profile_pic1.png"
+    alt="Lavkush Kumar"
+    className="h-full w-full scale-x-105 rounded-2xl object-cover"
+  />
         </motion.div>
       </motion.div>
 
