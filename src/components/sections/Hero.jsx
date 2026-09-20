@@ -115,7 +115,7 @@ export function Hero() {
          <img
   src="/profile/Lavkush_Profile_pic1.png"
   alt="Lavkush Kumar"
-  className="h-full w-full scale-x-105 rounded-2xl object-cover"
+  className="h-full w-full scale-100 rounded-2xl object-cover"
 />
         </motion.div>
       </motion.div>
