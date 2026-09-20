@@ -110,12 +110,12 @@ export function Hero() {
 
         <motion.div
           variants={item}
-          className="glass relative mx-auto flex aspect-square w-full max-w-sm overflow-hidden items-center justify-center rounded-2xl border border-dashed border-border"
+          className="glass relative mx-auto flex aspect-square w-full max-w-xs overflow-hidden items-center justify-center rounded-2xl border border-dashed border-border"
         >
          <img
   src="/profile/Lavkush_Profile_pic1.png"
   alt="Lavkush Kumar"
-  className="h-full w-[85%] rounded-2xl object-cover"
+  className="h-full w-full scale-x-110 rounded-2xl object-cover"
 />
         </motion.div>
       </motion.div>
